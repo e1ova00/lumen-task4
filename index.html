@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+ <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="description" content="LUMEN STUDIO — восемь вымышленных пространств для вашего творчества в Санкт-Петербурге. Учебное демо бронирования фотостудий.">
+ <meta name="theme-color" content="#F5F2ED"><title>LUMEN STUDIO — Пространство для вашего видения</title>
+ <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+ <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+ <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+ <link rel="stylesheet" href="./css/style.css">
+ <script defer src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+ <script type="module" src="./js/app.js"></script>
+</head>
+<body>
+ <a class="skip-link" href="#main">К содержимому</a>
+ <header class="site-header">
+  <a href="#home" class="wordmark" aria-label="Lumen Studio — главная">LUMEN<span>STUDIO</span><i aria-hidden="true">✳</i></a>
+  <nav aria-label="Основная навигация"><a href="#home" data-nav="home">Главная</a><a href="#explore" data-nav="explore">Пространства <span class="nav-count">08</span></a><a href="#bookings" data-nav="bookings">Мои бронирования <span id="booking-count" class="nav-count">0</span></a></nav>
+  <span class="header-city">САНКТ-ПЕТЕРБУРГ <span aria-hidden="true">↗</span></span>
+ </header>
+ <div id="storage-warning" class="warning" role="status" hidden></div>
+ <main id="main" tabindex="-1">
+  <section id="home-view" class="view" aria-label="Главная">
+   <div class="hero">
+    <div class="hero-copy"><p class="eyebrow">PRIVATE CREATIVE SPACES · SAINT PETERSBURG</p><h1>У вашего<br>видения есть<br><em>пространство.</em></h1><div class="hero-intro"><span class="fine-line" aria-hidden="true"></span><p>Восемь студий. Восемь характеров.<br>Найдите место, где ваша идея<br>обретёт форму.</p></div><a class="button dark hero-cta" href="#explore">Выбрать пространство <span aria-hidden="true">↗</span></a><p class="hero-tagline">A space for your vision.</p></div>
+    <div class="hero-visual"><div id="hero-art"></div><span class="art-corner top">THE ART OF SPACE</span><span class="art-corner bottom">LIGHT / FORM / POSSIBILITY</span><div class="art-caption"><span>01 / 08</span><span id="hero-studio-caption"></span><a href="#studio/atelier" aria-label="Открыть студию ATELIER">↗</a></div><span class="vertical-note">59°56′ N &nbsp; 30°19′ E</span></div>
+    <div class="hero-bottom"><span>КОЛЛЕКЦИЯ ПРОСТРАНСТВ — 001–008</span><a href="#story">ДЛЯ ТЕХ, КТО СОЗДАЁТ <span aria-hidden="true">↓</span></a><span>СВЕТ. ФОРМА. ВОЗМОЖНОСТИ.</span></div>
+   </div>
+   <section class="story page-width" id="story"><p class="eyebrow">ФИЛОСОФИЯ LUMEN / 01</p><div><h2>Больше, чем стены.<br><em>Начало вашей истории.</em></h2><p>Пространство задаёт настроение. Свет открывает новое. Мы собрали восемь разных характеров в одном городе — чтобы вы могли сосредоточиться на главном: создавать.</p><p class="muted small">Все студии вымышлены. Адреса и точки на карте — условные ориентиры для учебной демонстрации.</p></div></section>
+   <section class="collection page-width"><div class="section-heading"><div><p class="eyebrow">ИЗБРАННЫЕ ПРОСТРАНСТВА / 02</p><h2>Найдите свой <em>свет.</em></h2></div><a class="text-link" href="#explore">Вся коллекция <span aria-hidden="true">↗</span></a></div><div id="featured-studios" class="featured-grid"></div></section>
+   <section class="closing page-width"><span class="asterisk" aria-hidden="true">✳</span><p class="eyebrow">ВАША СЛЕДУЮЩАЯ ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</p><h2>Дайте идее <em>место.</em></h2><a class="button dark" href="#explore">Найти пространство <span aria-hidden="true">↗</span></a></section>
+  </section>
+  <section id="explore-view" class="view page-width" aria-labelledby="explore-title" hidden>
+   <div class="page-heading"><div><p class="eyebrow">КОЛЛЕКЦИЯ / САНКТ-ПЕТЕРБУРГ</p><h1 id="explore-title">Пространства<br><em>для ваших идей.</em></h1></div><p>У каждого места — свой характер.<br>У каждой идеи — своё место.</p></div>
+   <form id="filters" class="filters"><div class="filter-title"><span class="eyebrow">ПОДБЕРИТЕ СТУДИЮ</span><button class="text-button" type="reset">Сбросить ↺</button></div><div class="filter-fields"><label>Цена до, ₽ / час<input id="max-price" name="maxPrice" type="number" min="0" step="100" placeholder="Без ограничений"></label><label>Вместимость от<input id="min-capacity" name="minCapacity" type="number" min="1" max="100" step="1" placeholder="Любая"></label><label>Дата<input id="filter-date" type="date" required></label><label>Начало<select id="filter-start" aria-label="Начало съёмки"></select></label><label>Часов<select id="filter-duration" aria-label="Длительность съёмки"></select></label><label>Порядок<select id="sort"><option value="index">По коллекции</option><option value="asc">Сначала дешевле</option><option value="desc">Сначала дороже</option></select></label></div><p id="filter-error" class="field-error" role="status"></p></form>
+   <div class="explore-toolbar"><p id="result-count" aria-live="polite"></p><div class="legend"><span><i class="legend-free"></i>Доступно</span><span><i class="legend-selected">✓</i>Выбрано</span><span><i class="legend-busy">×</i>Занято</span></div></div>
+   <div class="explore-layout"><div class="map-column"><div class="map-wrap"><div id="map" role="region" aria-label="Карта студий Санкт-Петербурга"></div><p id="map-notice" class="map-notice" role="status" hidden></p><span class="map-city">САНКТ-ПЕТЕРБУРГ / 8 ПРОСТРАНСТВ</span></div><p class="map-note">Точки и адреса условные. Масштаб меняется кнопками + / − или жестом двумя пальцами.</p><div id="selected-panel" class="selected-panel"><p class="eyebrow">ВАШЕ ПРОСТРАНСТВО</p><h2>Начните с <em>выбора.</em></h2><p class="muted">Выберите доступную студию на карте или в списке.</p></div></div><div id="studio-list" class="studio-list" aria-label="Список студий"></div></div>
+  </section>
+  <section id="detail-view" class="view page-width" aria-label="Студия и бронирование" hidden></section>
+  <section id="bookings-view" class="view page-width" aria-labelledby="bookings-title" hidden><div class="page-heading"><div><p class="eyebrow">ЛИЧНАЯ КОЛЛЕКЦИЯ</p><h1 id="bookings-title">Ваши <em>планы.</em></h1></div><p>Место для будущих историй.<br>Все детали — под рукой.</p></div><div id="bookings-list"></div></section>
+ </main>
+ <footer class="site-footer page-width"><a href="#home" class="footer-brand">LUMEN STUDIO</a><p>Учебное демо: бронирования сохраняются только в этом браузере</p><span>© 2026 · A SPACE FOR YOUR VISION.</span></footer>
+ <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+ <dialog id="cancel-dialog" aria-labelledby="cancel-title"><form method="dialog"><p class="eyebrow">МОИ БРОНИРОВАНИЯ</p><h2 id="cancel-title">Отменить <em>съёмку?</em></h2><p>Бронь останется в истории, а время снова станет доступным.</p><div class="dialog-actions"><button value="close" class="button outline">Оставить бронь</button><button id="confirm-cancel" type="button" class="button dark">Отменить бронь</button></div></form></dialog>
+ <noscript><p class="warning">Для карты и бронирования включите JavaScript в браузере.</p></noscript>
+</body>
+</html>
